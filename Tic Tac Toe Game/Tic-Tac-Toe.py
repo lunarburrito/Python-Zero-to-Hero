@@ -33,7 +33,6 @@ def free_space(board , position):
     '''
     return board[position] == ' ' #the game starts with a board of spaces everywhere
 
-
 def full_board(board):
     '''
     function that checks if the board is full and returns a boolean value. True if full, False otherwise.
@@ -50,7 +49,6 @@ def assigning(board,marker,position):
     function that takes in the board list object, a marker ('X' or 'O'), and a desired position (number 1-9) and assigns it to the board.**
     '''
     board[position]=marker
-
 
 def check_win(board,marker):
     '''
@@ -77,9 +75,6 @@ def first_player ():
     '''
     return random.randint(1,2)
 
-
-
-
 def next_position(board):
     '''
     function that asks for a player's next position (as a number 1-9) and
@@ -95,23 +90,38 @@ def next_position(board):
             print("that is already full , try again please, to help here's the board again")
             display_board(board)
 
-print ("Welcome to Tic Tac Toe Game !")
-markers = player_input()
-##print ("let's check who goes first")
-##firsty = first_player() # is 1 for player 1 and 2 for player 2
-##print(f' player {firsty} will go first ! with marker {markers[firsty-1]} ')
-print("Here's your board : ")
-board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
-display_board(board)
-someone_won = False
+def main_game():
+    someone_won = False
+    print ("Welcome to Tic Tac Toe Game !")
+    markers = player_input()
 
-while not (full_board(board) or someone_won):
-    for play in range (0,2):
-            print (f'it is {markers[play]} turn')  # [player1_marker,player2_marker]
-            j = next_position(board)
-            assigning(board,markers[play],j)
-            display_board(board)
-            if check_win(board,markers[play]):
-                print (f'{markers[play]} has won the game !')
-                someone_won = True
-                break
+    firsty=first_player() # this will be 1 if player 1 is first , and 2 is player 2 is first
+    #markers is a list [player1_marker,player2_marker]
+    #if firsty == 1 , no need to do anything since we start with markers[0] meaning player_1
+    if firsty == 2:
+        markers.reverse()
+    print(f'{markers[0]} will start first')
+
+    print("Here's your board : ")
+    board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
+    display_board(board)
+
+    while not (full_board(board) or someone_won):
+        for play in range (0,2):
+                print (f'it is {markers[play]} turn')  # [player1_marker,player2_marker]
+                j = next_position(board)
+                assigning(board,markers[play],j)
+                display_board(board)
+                if check_win(board,markers[play]):
+                    print (f'{markers[play]} has won the game !')
+                    someone_won = True
+                    break
+
+go_again = True
+while go_again :
+    main_game()
+    again = input("would you like to go again ?  y/n")
+    if again == "y":
+        go_again = True
+    else:
+        go_again = False
