@@ -1,10 +1,14 @@
 import random
+import os
+
+def clear():
+    os.system( 'cls' )
 
 def display_board(board):
-
     '''
     function that will print the board
     '''
+    clear()
     newline = 3
     for ox in board :
         print(ox,'|',end = '')
@@ -82,7 +86,7 @@ def next_position(board):
     If it is, then return the position for later use.
     '''
     while True :
-        position = int(input("Please enter next move as a position 1 - 9"))
+        position = int(input("Please enter next move as a position 1 - 9 "))
         if free_space(board,position - 1):
             return position-1
             break
