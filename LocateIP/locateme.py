@@ -18,7 +18,7 @@ def locateme(IP):
 
     # Print Extracted Details
     print("\n")
-    print (f"IP info details for {IP}")
+    print (f"IP-info details for {IP}")
     print (f"City {city}")
     print (f"country {country}")
     print (f"location {location}")
