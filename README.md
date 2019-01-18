@@ -12,3 +12,7 @@ Contains notes and testing of main Python features
 Tic-Tac-Toe Game Coded with Python.
 
 Black Jack Simplified coded with Python.
+
+Locateme : Enter an IP address and have it located through 3 different IP geolocation services. - Please adjust key to IP stack before using
+
+hotorcold-IP : Locate you based on your IP and returns the temp in that location - Please adjust key to weather map before using.
